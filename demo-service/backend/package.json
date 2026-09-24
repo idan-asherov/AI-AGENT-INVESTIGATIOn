@@ -1,0 +1,15 @@
+{
+  "name": "demo-service-backend",
+  "version": "1.0.0",
+  "description": "Backend API service for DAVOPS Agent AI",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "mongodb": "^6.0.0"
+  }
+}

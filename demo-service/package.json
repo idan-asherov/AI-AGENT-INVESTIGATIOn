@@ -1,0 +1,17 @@
+{
+  "name": "demo-service",
+  "version": "1.0.0",
+  "description": "demo-service for agent",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Idan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^7.6.0",
+    "nodemon": "^3.1.14"
+  }
+}
