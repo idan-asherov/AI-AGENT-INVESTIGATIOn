@@ -2,16 +2,20 @@
   "name": "demo-service",
   "version": "1.0.0",
   "description": "demo-service for agent",
-  "main": "index.js",
+  "main": "backend/app.js",
   "type": "module",
   "scripts": {
+    "start": "node backend/app.js",
+    "dev": "nodemon backend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Idan",
   "license": "ISC",
   "dependencies": {
     "express": "^5.2.1",
-    "mongodb": "^7.6.0",
+    "mongodb": "^7.6.0"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.14"
   }
 }
