@@ -32,7 +32,7 @@ async function callDemoService(endpoint) {
 export const checkServiceHealth = tool({
   name: "check_service_health",
   description: "Checks the orders api health via /health and /api/orders",
-  parameters: z.object({}).optional(),
+  parameters: z.object({}),
   async execute() {
     console.log("🛠️ check_service_health executed");
     const health = await callDemoService("/health");
@@ -48,7 +48,7 @@ export const checkServiceHealth = tool({
 export const getRecentLogs = tool({
   name: "get_recent_logs",
   description: "Returns the last 20 log lines of orders api, newest first.",
-  parameters: z.object({}).optional(),
+  parameters: z.object({}),
   async execute() {
     console.log("🛠️ get_recent_logs executed");
     const result = await callDemoService("/logs");
@@ -74,17 +74,12 @@ export const getRecentLogs = tool({
  */
 export const getProductionInfo = tool({
   name: "get_production_info",
-  description: "Returns runtime and container configuration details.",
-  parameters: z.object({}).optional(),
+  description:
+    "Returns which version of orders-api is currently deployed (from the service's /version endpoint).",
+  parameters: z.object({}),
   async execute() {
     console.log("🛠️ get_production_info executed");
-
-    return {
-      environment: process.env.NODE_ENV || "production",
-      runtime: "Node.js",
-      version: "1.0.0",
-      containerStatus: "running",
-      serviceUrl: BASE_URL,
-    };
+    const version = await callDemoService("/version");
+    return { version, serviceUrl: BASE_URL };
   },
 });

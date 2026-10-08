@@ -1,5 +1,5 @@
 {
-  "name": "demo-service-backend",
+  "name": "demo-service",
   "version": "1.0.0",
   "description": "Backend API service for DAVOPS Agent AI",
   "main": "app.js",

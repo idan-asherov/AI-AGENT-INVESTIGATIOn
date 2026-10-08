@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.env*
+.DS_Store
+.vercel
+
+ops-agent/CLAUDE.md
+ops-agent/AGENT.md
+*.log
+
+
