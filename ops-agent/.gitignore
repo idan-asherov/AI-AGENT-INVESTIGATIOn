@@ -9,3 +9,5 @@ ops-agent/AGENT.md
 *.log
 
 
+
+!.env.example

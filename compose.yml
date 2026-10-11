@@ -1,0 +1,35 @@
+name: davops-agent-ai
+
+services:
+  demo-service:
+    build:
+      context: ./backend/demo-service
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:22-slim}
+    image: davops/demo-service:1.0
+    container_name: demo-service
+    env_file: ./backend/demo-service/.env      # MONGODB_URI, FAULT, ...
+    environment:
+      PORT: "5001"
+    ports:
+      - "5001:5001"
+    restart: unless-stopped
+
+  ops-agent:
+    build:
+      context: ./ops-agent
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:22-slim}
+    image: davops/ops-agent:1.0
+    container_name: ops-agent
+    env_file: ./ops-agent/.env                 # OPENAI_API_KEY, ...
+    environment:
+      # Inside the compose network the backend is reached by its SERVICE NAME,
+      # not localhost. This overrides DEMO_SERVICE_URL from the .env file.
+      DEMO_SERVICE_URL: http://demo-service:5001
+    ports:
+      - "3000:3000"
+    depends_on:
+      demo-service:
+        condition: service_healthy
+    restart: unless-stopped
